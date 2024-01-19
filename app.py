@@ -10,45 +10,43 @@ def class_type():
     return selected_class
 
 # Main Streamlit app
-def main():
-    st.title('GPA Calculator')
 
-    # Load existing data or initialize an empty list
-    data = load_from_csv()
+st.title('GPA Calculator')
 
-    # User input section
-    student_name = st.text_input('Enter Student Name:')
-    class_type_input = class_type()
-    grades_str = st.text_input('Enter Grades and Percent (comma-separated):')
+# Load existing data or initialize an empty list
+data = load_from_csv()
 
-    if st.button('Calculate GPA'):
-        try:
-            # Parse grades and percent from input
-            grades_and_percent = [item.strip() for item in grades_str.split(',')]
-            letter_grades = grades_and_percent[::2]
-            percentages = [float(grade) for grade in grades_and_percent[1::2]]
+# User input section
+student_name = st.text_input('Enter Student Name:')
+class_type_input = class_type()
+grades_str = st.text_input('Enter Grades and Percent (comma-separated):')
 
-            # Calculate GPA based on your logic
-            gpa = calculate_gpa(percentages)
-            st.success(f'{student_name}\'s GPA: {gpa}')
+if st.button('Calculate GPA'):
+    try:
+        # Parse grades and percent from input
+        grades_and_percent = [item.strip() for item in grades_str.split(',')]
+        letter_grades = grades_and_percent[::2]
+        percentages = [float(grade) for grade in grades_and_percent[1::2]]
 
-            # Save data to list
-            data.append({'Student Name': student_name, 'Class Type': class_type_input, 'Letter Grades': letter_grades, 'Percentages': percentages, 'GPA': gpa})
+        # Calculate GPA based on your logic
+        gpa = calculate_gpa(percentages)
+        st.success(f'{student_name}\'s GPA: {gpa}')
 
-            # Save data to CSV
-            save_to_csv(data)
+        # Save data to list
+        data.append({'Student Name': student_name, 'Class Type': class_type_input, 'Letter Grades': letter_grades, 'Percentages': percentages, 'GPA': gpa})
 
-        except ValueError:
-            st.error('Invalid input. Please enter valid grades and percentages separated by commas.')
+        # Save data to CSV
+        save_to_csv(data)
 
-    # Display existing data
-    st.subheader('Existing Data:')
-    df = pd.DataFrame(data)
-    st.dataframe(df)
+    except ValueError:
+        st.error('Invalid input. Please enter valid grades and percentages separated by commas.')
 
-    # Button to show GPA growth chart
-    if st.button('Show GPA Growth Chart'):
-        # Implement code to display GPA growth chart using a plotting library
+# Display existing data
+st.subheader('Existing Data:')
+df = pd.DataFrame(data)
+st.dataframe(df)
 
-# Run the main function
-main()
+# Button to show GPA growth chart
+if st.button('Show GPA Growth Chart'):
+    # Implement code to display GPA growth chart using a plotting library
+
