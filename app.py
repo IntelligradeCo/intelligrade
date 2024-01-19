@@ -9,6 +9,19 @@ def class_type():
     selected_class = st.selectbox('Select Class Type:', class_types)
     return selected_class
 
+def plot_gpa_growth(data):
+    plt.figure(figsize=(10, 6))
+    
+    for index, row in data.iterrows():
+        plt.plot(row['GPA'], label=row['Student Name'])
+
+    plt.title('GPA Growth Over Time')
+    plt.xlabel('Semester/Period')
+    plt.ylabel('GPA')
+    plt.legend()
+    
+    st.pyplot()
+
 # Main Streamlit app
 
 st.title('GPA Calculator')
@@ -48,5 +61,6 @@ st.dataframe(df)
 
 # Button to show GPA growth chart
 if st.button('Show GPA Growth Chart'):
-    # Implement code to display GPA growth chart using a plotting library
-
+    if len(data) > 0:
+            # Plot GPA growth chart
+            plot_gpa_growth(pd.DataFrame(data))# Implement code to display GPA growth chart using a plotting library
