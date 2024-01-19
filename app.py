@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import matplotlib.pyplot as plt  # Add this import statement
 
 # ... (other imports and functions)
 
@@ -62,5 +63,7 @@ st.dataframe(df)
 # Button to show GPA growth chart
 if st.button('Show GPA Growth Chart'):
     if len(data) > 0:
-            # Plot GPA growth chart
-            plot_gpa_growth(pd.DataFrame(data))# Implement code to display GPA growth chart using a plotting library
+        # Plot GPA growth chart
+        plot_gpa_growth(pd.DataFrame(data))
+    else:
+        st.warning('Not enough data to plot. Add more entries.')
