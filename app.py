@@ -50,11 +50,13 @@ ib_ap_classes_gpa = {
     "D": 2.0,
     "F": 0.0
 }
+def name():
+    name = st.text_input("What is your name?")
+    return name
 
 def user_selections():
-    name = st.text_input("What is your name?")
     courses_number = st.number_input("How many courses would you like to calculate GPA for?", 1)
-    return courses_number, name
+    return courses_number
 
 def make_table(num_rows, name):
     # Create an empty DataFrame with the desired number of rows
@@ -83,4 +85,5 @@ def make_table(num_rows, name):
     st.table(df)
 
 courses_number = user_selections()
-make_table(courses_number)
+name = name()
+make_table(courses_number,name)
