@@ -63,3 +63,5 @@ def convert_gpa(selected_class):
     if selected_class == 0:
         print("HI")
 
+user_selections()
+
