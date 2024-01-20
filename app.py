@@ -54,6 +54,3 @@ def class_type():
     class_types = ['Honors', 'AP', 'IB', 'Normal']
     selected_class = st.selectbox('Select Class Type:', class_types)
     return selected_class
-
-def gpa_class_type(selected_class):
-    
