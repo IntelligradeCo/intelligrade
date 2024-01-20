@@ -61,10 +61,9 @@ def user_selections():
     courses_number = st.number_input("How many courses would you like to calculate GPA for?", 1)
     return courses_number
 
-def make_table():
+def make_table(courses_number):
     data = []
-    add_row = True
-    while add_row:
+    for i in range (courses_number):
         class_name = st.text_input("Class Name")
         letter_grade = st.selectbox("Letter Grade", ('A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D+', 'D', 'F'))
         class_type = st.selectbox("Class Type", ('Normal', 'Honors', 'AP', 'IB'))
@@ -75,5 +74,5 @@ def make_table():
     st.table(df)
 
 courses_number = user_selections()
-make_table()
+make_table(courses_number)
 
