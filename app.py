@@ -78,10 +78,3 @@ def make_table(num_rows):
 
 courses_number = user_selections()
 make_table(courses_number)
-def convert_gpa(selected_class):
-    if selected_class == 0:
-        print("HI")
-
-user_selections()
-make_table()
-
