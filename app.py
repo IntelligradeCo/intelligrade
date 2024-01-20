@@ -71,7 +71,7 @@ def make_table(num_rows):
         letter_grade = st.selectbox(f"Letter Grade {i+1}", ('A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D+', 'D', 'F'), key=f"letter_grade_{i}")
         class_type = st.selectbox(f"Class Type {i+1}", ('Normal', 'Honors', 'AP', 'IB'), key=f"class_type_{i}")
         df.loc[i] = [class_name, letter_grade, class_type]
-    
+        st.divider()
     # Display the updated table
     st.table(df)
 
