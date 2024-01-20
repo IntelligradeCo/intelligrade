@@ -51,6 +51,11 @@ ib_ap_classes_gpa = {
     "F": 0.0
 }
 
+def calculate_avg_gpa(df):
+    total_gpa = df['GPA'].sum()
+    avg_gpa = total_gpa / len(df)
+    return avg_gpa
+
 def user_selections():
     courses_number = st.number_input("How many courses would you like to calculate GPA for?", 1)
     return courses_number
@@ -79,6 +84,9 @@ def make_table(num_rows):
     
 
     st.table(df)
+    avg_gpa = calculate_avg_gpa(df)
+    st.write(f"Average GPA: {avg_gpa:.2f}")
 
 courses_number = user_selections()
 make_table(courses_number)
+
