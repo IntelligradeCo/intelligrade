@@ -54,3 +54,12 @@ def class_type():
     class_types = ['Honors', 'AP', 'IB', 'Normal']
     selected_class = st.selectbox('Select Class Type:', class_types)
     return selected_class
+
+def user_selections():
+    courses_number = st.number_input("How many courses would you like to calculate GPA for?", 1)
+    
+
+def convert_gpa(selected_class):
+    if selected_class == 0:
+        print("HI")
+
