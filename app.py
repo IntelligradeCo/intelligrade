@@ -51,20 +51,17 @@ ib_ap_classes_gpa = {
     "F": 0.0
 }
 
-# Function to find out type of class
-def class_type():
-    class_types = ['Honors', 'AP', 'IB', 'Normal']
-    selected_class = st.selectbox('Select Class Type:', class_types)
-    return selected_class
-
 def user_selections():
+    name = st.text_input("What is your name?")
     courses_number = st.number_input("How many courses would you like to calculate GPA for?", 1)
-    return courses_number
-def make_table(num_rows):
+    return courses_number, name
+
+def make_table(num_rows, name):
     # Create an empty DataFrame with the desired number of rows
     df = pd.DataFrame(columns=['Class Name', 'Letter Grade', 'Class Type', 'GPA'],
-                      index=range(num_rows))
-    
+                      index=range(num_rows+1))
+    df.loc[1] = [name]
+
     # Display the table with input fields for each cell
     for i in range(num_rows):
         class_name = st.text_input(f"Class Name {i+1}", key=f"class_name_{i}")
