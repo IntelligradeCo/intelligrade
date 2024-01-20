@@ -61,27 +61,19 @@ def user_selections():
     courses_number = st.number_input("How many courses would you like to calculate GPA for?", 1)
     return courses_number
 
-def make_table(num_rows):
-    # Create an empty DataFrame with the desired number of rows
-    df = pd.DataFrame(columns=['Class Name', 'Letter Grade', 'Class Type'],
-                      index=range(num_rows))
+def make_table():
+    data = []
+    add_row = True
+    while add_row:
+        class_name = st.text_input("Class Name")
+        letter_grade = st.selectbox("Letter Grade", ('A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D+', 'D', 'F'))
+        class_type = st.selectbox("Class Type", ('Normal', 'Honors', 'AP', 'IB'))
+        data.append([class_name, letter_grade, class_type])
+        add_row = st.checkbox("Add Another Course")
     
-    # Display the table with input fields for each cell
-    for i in range(num_rows):
-        class_name = st.text_input(f"Class Name {i+1}", key=f"class_name_{i}")
-        letter_grade = st.selectbox(f"Letter Grade {i+1}", ('A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D+', 'D', 'F'), key=f"letter_grade_{i}")
-        class_type = st.selectbox(f"Class Type {i+1}", ('Normal', 'Honors', 'AP', 'IB'), key=f"class_type_{i}")
-        df.loc[i] = [class_name, letter_grade, class_type]
-    
-    # Display the updated table
+    df = pd.DataFrame(data, columns=['Class Name', 'Letter Grade', 'Class Type'])
     st.table(df)
 
 courses_number = user_selections()
-make_table(courses_number)
-def convert_gpa(selected_class):
-    if selected_class == 0:
-        print("HI")
-
-user_selections()
 make_table()
 
