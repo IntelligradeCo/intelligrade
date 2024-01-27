@@ -20,6 +20,7 @@ normal_classes_gpa = {
     "F": 0.0
 }
 
+# Grades for honor classes
 honors_classes_gpa = {
     "A+": 4.5,
     "A": 4.5,
@@ -35,7 +36,7 @@ honors_classes_gpa = {
     "F": 0.0
 }
 
-
+# Grades for IB/AP classes
 ib_ap_classes_gpa = {
     "A+": 5.0,
     "A": 5.0,
@@ -51,17 +52,19 @@ ib_ap_classes_gpa = {
     "F": 0.0
 }
 
+# Function to calculate average GPA
 def calculate_avg_gpa(df):
     total_gpa = df['GPA'].sum()
     avg_gpa = total_gpa / len(df)
     return avg_gpa
 
+# Function to ask user inputs for number of courses
 def user_selections():
     courses_number = st.number_input("How many courses would you like to calculate GPA for?", 1)
     return courses_number
 
+# Function to make and empty table using Pandas DataFrame
 def make_table(num_rows):
-    # Create an empty DataFrame with the desired number of rows
     df = pd.DataFrame(columns=['Class Name', 'Letter Grade', 'Class Type', 'GPA'],
                       index=range(num_rows))
     
@@ -79,14 +82,14 @@ def make_table(num_rows):
 
         df.loc[i] = [class_name, letter_grade, class_type, gpa]
         st.divider()
-    # Display the updated table
-        
-    
 
+    # Displaying updated table
     st.table(df)
+    # Calling Average GPA function
     avg_gpa = calculate_avg_gpa(df)
     st.write(f"Average GPA: {avg_gpa:.2f}")
 
+# Calling make_table function
 courses_number = user_selections()
 make_table(courses_number)
 
