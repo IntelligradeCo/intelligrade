@@ -1,9 +1,6 @@
+# Imports
 import streamlit as st
 import pandas as pd
-import matplotlib.pyplot as plt
-import csv
-
-data = []
 
 # Class Types to GPA
 normal_classes_gpa = {
@@ -58,6 +55,8 @@ def calculate_avg_gpa(df):
     total_gpa = df['GPA'].sum()
     avg_gpa = total_gpa / len(df)
     return avg_gpa
+
+# Function to get User's Name
 def user():
     user_name = st.text_input("What's your name?: ")
     if user_name == '':
@@ -108,4 +107,5 @@ def make_table(num_rows):
         df.to_csv("gpa_data.csv", index=False)
         st.success("Data saved successfully!")
         st.success("Data saved successfully!")
+        # Printing Table for Demo
         st.table(df)
