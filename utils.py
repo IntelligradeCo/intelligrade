@@ -70,7 +70,7 @@ def user_selections():
 
 # Convert dataframe to csv
 def convert_df(df):
-    return df.to_csv
+    return df.to_csv.encode('utf-8')
 
 # Function to make and empty table using Pandas DataFrame
 def make_table(num_rows):
@@ -101,14 +101,8 @@ def make_table(num_rows):
     # Calling Average GPA function
     avg_gpa = calculate_avg_gpa(df)
     st.write(f"Average GPA: {avg_gpa:.2f}")
-    unofficial_transcript = convert_df(df)
-    
-    st.download_button(
-    label="Download data as CSV",
-    data=unofficial_transcript,
-    file_name='large_df.csv',
-    mime='text/csv',
-)
+    df.to_csv(f"Unofficial transcript for {name}")
+    st.download_button("Unofficial Transcript", "gpa_data.csv")
 
 
     
