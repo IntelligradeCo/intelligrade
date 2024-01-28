@@ -67,6 +67,7 @@ def user_selections():
 
 # Function to make and empty table using Pandas DataFrame
 def make_table(num_rows):
+    st.title(f"Unofficial Transcript for {user_name}")
     df = pd.DataFrame(columns=['Class Name', 'Letter Grade', 'Class Type', 'GPA'],
                       index=range(num_rows))
     
@@ -75,6 +76,7 @@ def make_table(num_rows):
         class_name = st.text_input(f"Class Name {i+1}", key=f"class_name_{i}")
         letter_grade = st.selectbox(f"Letter Grade {i+1}", ('A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D+', 'D', 'F'), key=f"letter_grade_{i}")
         class_type = st.selectbox(f"Class Type {i+1}", ('Normal', 'Honors', 'AP', 'IB'), key=f"class_type_{i}")
+        
         if class_type == 'Normal':
             gpa = normal_classes_gpa[letter_grade]
         elif class_type == 'Honors':
@@ -96,7 +98,6 @@ def make_table(num_rows):
     # Add save functionality
     if st.button("Save Data"):
         # Confirmation checkbox    
-        df["Name"] = user_name  # Add a "Name" column
         df["Average GPA"] = avg_gpa # Add a 'avg_gpa' column
         df.to_csv("gpa_data.csv", index=False)
         st.success("Data saved successfully!")
