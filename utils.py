@@ -107,18 +107,5 @@ def make_table(num_rows):
         st.success("Data saved successfully!")
         st.success("Data saved successfully!")
         st.table(df)
-#-------------------------------------------------------------------------------------------------------------
-# Functions for Grade Tracker
-
-def grade_tracker():
-
-    # Get user input for name
-    user_name = input("Enter your name: ")
-
-    # Load the CSV data
-    df = pd.read_csv("gpa_data.csv")
-
-    # Filter data for the specific user
-    user_data = df[df["Name"] == user_name]
 
     

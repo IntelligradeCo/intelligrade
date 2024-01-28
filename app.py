@@ -15,8 +15,7 @@ if selected_feature == "GPA Calculator":
     # Calling make_table function
     courses_number = user_selections()
     make_table(courses_number)
-elif selected_feature == "Grade Tracker":
-    grade_tracker()
+
 
 
 
