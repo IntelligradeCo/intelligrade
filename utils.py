@@ -121,9 +121,4 @@ def grade_tracker():
     # Filter data for the specific user
     user_data = df[df["Name"] == user_name]
 
-    # Create the bar graph (example using GPA vs. Class Name)
-    plt.bar(user_data["Class Name"], user_data["GPA"])
-    plt.xlabel("Class Name")
-    plt.ylabel("GPA")
-    plt.title(f"Your GPA for Each Class, {user_name}")
-    plt.show()
+    
