@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
+import csv
 
 data = []
 
@@ -52,9 +53,12 @@ ib_ap_classes_gpa = {
     "F": 0.0
 }
 
+# Function to save data
+def save_gpa():
+    df["Name"] = name  # Add a "Name" column to the DataFrame
+    df.to_csv("gpa_data.csv", index=False)
 
 # Function to calculate average GPA
-
 def calculate_avg_gpa(df):
     total_gpa = df['GPA'].sum()
     avg_gpa = total_gpa / len(df)
