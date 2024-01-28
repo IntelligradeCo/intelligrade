@@ -69,6 +69,7 @@ def user_selections():
 
 # Function to make and empty table using Pandas DataFrame
 def make_table(num_rows):
+    name = user()
     df = pd.DataFrame(columns=['Class Name', 'Letter Grade', 'Class Type', 'GPA'],
                       index=range(num_rows))
     
@@ -88,7 +89,7 @@ def make_table(num_rows):
         df.loc[i] = [class_name, letter_grade, class_type, gpa]
         st.divider()
 
-    name = user()
+    
     st.text(f"Unofficial Transcript for {name}")
     # Displaying updated table
     st.table(df)
