@@ -12,9 +12,9 @@ selected_feature = st.sidebar.selectbox("Select a Feature:", ["GPA Calculator", 
 
 # Main content area
 if selected_feature == "GPA Calculator":
-    gpa_calculator
+    gpa_calculator()
 elif selected_feature == "Grade Tracker":
-    grade_tracker
+    grade_tracker()
 
 
 # Calling make_table function
