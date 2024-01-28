@@ -75,7 +75,7 @@ def convert_df(df):
 # Function to make and empty table using Pandas DataFrame
 def make_table(num_rows):
     name = user()
-    df = pd.DataFrame(columns=['Class Name', 'Letter Grade', 'Class Type', 'GPA'],
+    df_gpa = pd.DataFrame(columns=['Class Name', 'Letter Grade', 'Class Type', 'GPA'],
                       index=range(num_rows))
     
     # Display the table with input fields for each cell
@@ -91,15 +91,15 @@ def make_table(num_rows):
         elif class_type == 'IB' or "AP":
             gpa = ib_ap_classes_gpa[letter_grade]
 
-        df.loc[i] = [class_name, letter_grade, class_type, gpa]
+        df_gpa.loc[i] = [class_name, letter_grade, class_type, gpa]
         st.divider()
 
     
     st.text(f"Unofficial Transcript for {name}")
     # Displaying updated table
-    st.table(df)
+    st.table(df_gpa)
     # Calling Average GPA function
-    avg_gpa = calculate_avg_gpa(df)
+    avg_gpa = calculate_avg_gpa(df_gpa)
     st.write(f"Average GPA: {avg_gpa:.2f}")
     converted = df.to_csv(f"Unofficial transcript for {name}")
     st.download_button("Unofficial Transcript", converted , 'gpa_data.csv', )
@@ -108,11 +108,11 @@ def make_table(num_rows):
     
     # Add save functionality
     if st.button("Save Data"):
-        df["Name"] = name    
-        df["Average GPA"] = avg_gpa # Add a 'avg_gpa' column
-        df.to_csv("gpa_data.csv", index=False)
+        df_gpa["Name"] = name    
+        df_gpa["Average GPA"] = avg_gpa # Add a 'avg_gpa' column
+        df_gpa.to_csv("gpa_data.csv", index=False)
         st.success("Data saved successfully!")
         st.success("Data saved successfully!")
         # Printing Table for Demo
         st.download_button("Unofficial Transcript", "gpa_data.csv")
-        st.table(df)
+        st.table(df_gpa)
