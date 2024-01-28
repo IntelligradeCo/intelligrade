@@ -21,5 +21,5 @@ elif selected_feature == "Grade Tracker":
 backup_consent = st.checkbox("Would you like to save your information for future use?")
 if backup_consent == True:
     user_name = st.text_input("What's your name?: ")
-    save_gpa()
+    save_gpa(user_name)
 
