@@ -68,11 +68,14 @@ def user_selections():
     courses_number = st.number_input("How many courses would you like to calculate GPA for?", 1)
     return courses_number
 
+# Convert dataframe to csv
+def convert_df(df):
+    return df.to_csv.encode('utf-8')
 
 # Function to make and empty table using Pandas DataFrame
 def make_table(num_rows):
     name = user()
-    df_gpa = pd.DataFrame(columns=['Class Name', 'Letter Grade', 'Class Type', 'GPA'],
+    df = pd.DataFrame(columns=['Class Name', 'Letter Grade', 'Class Type', 'GPA'],
                       index=range(num_rows))
     
     # Display the table with input fields for each cell
@@ -88,29 +91,28 @@ def make_table(num_rows):
         elif class_type == 'IB' or "AP":
             gpa = ib_ap_classes_gpa[letter_grade]
 
-        df_gpa.loc[i] = [class_name, letter_grade, class_type, gpa]
+        df.loc[i] = [class_name, letter_grade, class_type, gpa]
         st.divider()
 
     
     st.text(f"Unofficial Transcript for {name}")
     # Displaying updated table
-    st.table(df_gpa)
+    st.table(df)
     # Calling Average GPA function
-    avg_gpa = calculate_avg_gpa(df_gpa)
+    avg_gpa = calculate_avg_gpa(df)
     st.write(f"Average GPA: {avg_gpa:.2f}")
+    df.to_csv(f"Unofficial transcript for {name}")
+    st.download_button("Unofficial Transcript", ".csv", 'gpa_data.csv', )
 
 
     
     # Add save functionality
     if st.button("Save Data"):
-        df_gpa["Name"] = name    
-        df_gpa["Average GPA"] = avg_gpa # Add a 'avg_gpa' column
-        df_gpa.to_csv("gpa_data.csv", index=False)
+        df["Name"] = name    
+        df["Average GPA"] = avg_gpa # Add a 'avg_gpa' column
+        df.to_csv("gpa_data.csv", index=False)
         st.success("Data saved successfully!")
         st.success("Data saved successfully!")
         # Printing Table for Demo
-
-        # Directly pass the CSV data to the download button:
-        st.download_button("Unofficial Transcript", df_gpa.to_csv(f"Unofficial transcript for {name}"), "gpa_data.csv")
-
-        st.table(df_gpa)
+        st.download_button("Unofficial Transcript", "gpa_data.csv")
+        st.table(df)
