@@ -67,7 +67,7 @@ def user_selections():
 
 # Function to make and empty table using Pandas DataFrame
 def make_table(num_rows):
-    st.title(f"Unofficial Transcript for {user_name}")
+    st.text(f"Unofficial Transcript for {user_name}")
     df = pd.DataFrame(columns=['Class Name', 'Letter Grade', 'Class Type', 'GPA'],
                       index=range(num_rows))
     
