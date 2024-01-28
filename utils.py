@@ -99,5 +99,4 @@ def make_table(num_rows):
         df.to_csv("gpa_data.csv", index=False)
         st.success("Data saved successfully!")
 
-    return df
     st.table(df)
