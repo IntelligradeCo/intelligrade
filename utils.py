@@ -94,8 +94,10 @@ def make_table(num_rows):
     # Add save functionality
     if st.button("Save Data"):
         user_name = st.text_input("What's your name?")
-        df["Name"] = user_name  # Add a "Name" column
-        df.to_csv("gpa_data.csv", index=False)
-        st.success("Data saved successfully!")
+        if user_name:
+            df["Name"] = user_name  # Add a "Name" column
+            df["Average GPA"] = avg_gpa # Add a 'avg_gpa' column
+            df.to_csv("gpa_data.csv", index=False)
+            st.success("Data saved successfully!")
 
     return df
