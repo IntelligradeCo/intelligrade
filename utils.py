@@ -98,9 +98,9 @@ def make_table(num_rows):
     # Calling Average GPA function
     avg_gpa = calculate_avg_gpa(df_gpa)
     st.write(f"Average GPA: {avg_gpa:.2f}")
-    converted = df_gpa.to_csv(f"Unofficial transcript for {name}")
-    print(converted)
-    st.download_button("Unofficial Transcript", converted , 'gpa_data.csv', )
+
+    # Directly pass the CSV data to the download button:
+    st.download_button("Unofficial Transcript", df_gpa.to_csv(f"Unofficial transcript for {name}"), "gpa_data.csv")
 
 
     
