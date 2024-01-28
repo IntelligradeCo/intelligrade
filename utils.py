@@ -101,3 +101,4 @@ def make_table(num_rows):
             st.success("Data saved successfully!")
 
     return df
+    st.table(df)
