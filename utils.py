@@ -64,12 +64,13 @@ def user():
 
 # Function to ask user inputs for number of courses
 def user_selections():
+    name = user()
     courses_number = st.number_input("How many courses would you like to calculate GPA for?", 1)
-    return courses_number
+    return courses_number,name
 
 # Function to make and empty table using Pandas DataFrame
 def make_table(num_rows):
-    name = user()
+    
     df = pd.DataFrame(columns=['Class Name', 'Letter Grade', 'Class Type', 'GPA'],
                       index=range(num_rows))
     
