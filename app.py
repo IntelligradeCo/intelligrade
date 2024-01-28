@@ -6,9 +6,6 @@ from utils import *
 # App title and layout
 st.title("GPA Calculator")
 
-# Sidebar navigation
-st.sidebar.title("Navigation")
-selected_feature = st.sidebar.selectbox("Select a Feature:", ["GPA Calculator", "Grade Tracker"])
 
 # Main content area
 if selected_feature == "GPA Calculator":
