@@ -61,12 +61,11 @@ def calculate_avg_gpa(df):
 def user():
     user_name = st.text_input("What's your name?: ")    
     return user_name
-
+name = user()
 # Function to ask user inputs for number of courses
 def user_selections():
-    name = user()
     courses_number = st.number_input("How many courses would you like to calculate GPA for?", 1)
-    return courses_number,name
+    return courses_number
 
 # Function to make and empty table using Pandas DataFrame
 def make_table(num_rows):
