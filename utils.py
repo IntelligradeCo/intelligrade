@@ -95,10 +95,8 @@ def make_table(num_rows):
     
     # Add save functionality
     if st.button("Save Data"):
-        # Get user name
-        user_name = st.text_input("What's your name?")
         # Confirmation checkbox    
-        confirm_submit = st.checkbox("Confirm you want to submit your data with this name.")
+        confirm_submit = st.checkbox(f"Confirm you want to submit your data with the name: {user_name}")
     
         # Submit button
         if st.button("Submit"):
