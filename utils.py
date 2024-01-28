@@ -91,12 +91,24 @@ def make_table(num_rows):
     avg_gpa = calculate_avg_gpa(df)
     st.write(f"Average GPA: {avg_gpa:.2f}")
 
+
+    
     # Add save functionality
     if st.button("Save Data"):
-        user_name = st.text_input("What's your name?")
-        df["Name"] = user_name  # Add a "Name" column
-        df["Average GPA"] = avg_gpa # Add a 'avg_gpa' column
-        df.to_csv("gpa_data.csv", index=False)
-        st.success("Data saved successfully!")
+    # Get user name
+    user_name = st.text_input("What's your name?")
+    # Confirmation checkbox    
+    confirm_submit = st.checkbox("Confirm you want to submit your data with this name.")
+
+    # Submit button
+    if st.button("Submit"):
+        if confirm_submit:
+            df["Name"] = user_name  # Add a "Name" column
+            df["Average GPA"] = avg_gpa # Add a 'avg_gpa' column
+            df.to_csv("gpa_data.csv", index=False)
+            st.success("Data saved successfully!")
+            st.success("Data saved successfully!")
+        else:
+            st.warning("Please confirm you want to submit before saving.")
 
     st.table(df)
