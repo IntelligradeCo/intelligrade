@@ -70,7 +70,7 @@ def user_selections():
 
 # Convert dataframe to csv
 def convert_df(df):
-    return df.to_csv.encode('utf-8')
+    return df.to_csv
 
 # Function to make and empty table using Pandas DataFrame
 def make_table(num_rows):
