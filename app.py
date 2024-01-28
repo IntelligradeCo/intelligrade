@@ -10,8 +10,6 @@ st.title("GPA Calculator")
 st.sidebar.title("Navigation")
 selected_feature = st.sidebar.selectbox("Select a Feature:", ["GPA Calculator", "Grade Tracker"])
 
-user_name()
-
 # Main content area
 if selected_feature == "GPA Calculator":
     # Calling make_table function
