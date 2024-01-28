@@ -59,10 +59,7 @@ def calculate_avg_gpa(df):
     avg_gpa = total_gpa / len(df)
     return avg_gpa
 
-def user_name():
-    name_user = st.text_input("What's your name?")
-    return name_user
-    
+user_name = st.text_input("What's your name?: ")    
 # Function to ask user inputs for number of courses and their name
 def user_selections():
     courses_number = st.number_input("How many courses would you like to calculate GPA for?", 1)
@@ -88,7 +85,6 @@ def make_table(num_rows):
         df.loc[i] = [class_name, letter_grade, class_type, gpa]
         st.divider()
 
-    user_name_input = user_name()
     # Displaying updated table
     st.table(df)
     # Calling Average GPA function
@@ -100,8 +96,7 @@ def make_table(num_rows):
     # Add save functionality
     if st.button("Save Data"):
         # Confirmation checkbox    
-        confirm_submit = st.checkbox(f"Confirm you want to submit your data with the name {user_name_input}?")
-        df["Name"] = user_name_input  # Add a "Name" column
+        df["Name"] = user_name  # Add a "Name" column
         df["Average GPA"] = avg_gpa # Add a 'avg_gpa' column
         df.to_csv("gpa_data.csv", index=False)
         st.success("Data saved successfully!")
