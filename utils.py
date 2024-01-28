@@ -59,6 +59,9 @@ def calculate_avg_gpa(df):
     avg_gpa = total_gpa / len(df)
     return avg_gpa
 
+def user_name():
+    user_name = st.text_input("What's your name?")
+    return user_name
 # Function to ask user inputs for number of courses and their name
 def user_selections():
     courses_number = st.number_input("How many courses would you like to calculate GPA for?", 1)
