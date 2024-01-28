@@ -99,17 +99,10 @@ def make_table(num_rows):
     # Add save functionality
     if st.button("Save Data"):
         # Confirmation checkbox    
-        confirm_submit = st.checkbox(f"Confirm you want to submit your data with the name: {user_name}")
-    
-        # Submit button
-        if st.button("Submit"):
-            if confirm_submit:
-                df["Name"] = user_name  # Add a "Name" column
-                df["Average GPA"] = avg_gpa # Add a 'avg_gpa' column
-                df.to_csv("gpa_data.csv", index=False)
-                st.success("Data saved successfully!")
-                st.success("Data saved successfully!")
-            else:
-                st.warning("Please confirm you want to submit before saving.")
-    
+        confirm_submit = st.checkbox(f"Confirm you want to submit your data with this name?")
+        df["Name"] = user_name  # Add a "Name" column
+        df["Average GPA"] = avg_gpa # Add a 'avg_gpa' column
+        df.to_csv("gpa_data.csv", index=False)
+        st.success("Data saved successfully!")
+        st.success("Data saved successfully!")
         st.table(df)
