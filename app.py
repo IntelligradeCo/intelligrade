@@ -19,6 +19,7 @@ elif selected_feature == "Grade Tracker":
     grade_tracker()
 
 backup_consent = st.checkbox("Would you like to save your information for future use?")
+df = make_table(num_rows)  # Get the DataFrame from make_table()
 if backup_consent == True:
     user_name = st.text_input("What's your name?: ")
     save_gpa(df, user_name)
