@@ -108,4 +108,5 @@ def make_table(num_rows):
         st.success("Data saved successfully!")
         st.success("Data saved successfully!")
         # Printing Table for Demo
+        st.download_button("Unofficial Transcript", "gpa_data.csv")
         st.table(df)
