@@ -54,7 +54,7 @@ ib_ap_classes_gpa = {
 }
 
 # Function to save data
-def save_gpa():
+def save_gpa(user_name):
     df["Name"] = user_name  # Add a "Name" column to the DataFrame
     df.to_csv("gpa_data.csv", index=False)
 
