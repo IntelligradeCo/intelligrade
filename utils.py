@@ -67,7 +67,6 @@ def user_selections():
     courses_number = st.number_input("How many courses would you like to calculate GPA for?", 1)
     return courses_number
 
-name = user()
 # Function to make and empty table using Pandas DataFrame
 def make_table(num_rows):
     df = pd.DataFrame(columns=['Class Name', 'Letter Grade', 'Class Type', 'GPA'],
@@ -89,7 +88,7 @@ def make_table(num_rows):
         df.loc[i] = [class_name, letter_grade, class_type, gpa]
         st.divider()
 
-    
+    name = user()
     st.text(f"Unofficial Transcript for {name}")
     # Displaying updated table
     st.table(df)
@@ -107,5 +106,3 @@ def make_table(num_rows):
         st.success("Data saved successfully!")
         st.success("Data saved successfully!")
         st.table(df)
-
-    
