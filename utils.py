@@ -102,17 +102,16 @@ def make_table(num_rows):
     avg_gpa = calculate_avg_gpa(df)
     st.write(f"Average GPA: {avg_gpa:.2f}")
     df.to_csv(f"Unofficial transcript for {name}")
-    st.download_button("Unofficial Transcript", ".csv", 'gpa_data.csv', )
+    st.download_button("Unofficial Transcript", ".csv", 'gpa_data.csv', ) # Save an unofficial transcript
 
 
     
     # Add save functionality
     if st.button("Save Data"):
-        df["Name"] = name    
+        df["Name"] = name # Add a 'Name' column
         df["Average GPA"] = avg_gpa # Add a 'avg_gpa' column
         df.to_csv("gpa_data.csv", index=False)
         st.success("Data saved successfully!")
 
         # Printing Table for Demo
-        st.download_button("Unofficial Transcript", "gpa_data.csv")
         st.table(df)
