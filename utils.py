@@ -60,10 +60,10 @@ def calculate_avg_gpa(df):
 def user():
     user_name = st.text_input("What's your name?: ")
     if user_name == '':
-        print("Please enter your name to save data.")    
+        st.warning("Please enter your name to save data.")    
     return user_name
 
-# Function to ask user inputs for number of courses
+# Function to ask user inputs fostr number of courses
 def user_selections():
     courses_number = st.number_input("How many courses would you like to calculate GPA for?", 1)
     return courses_number
