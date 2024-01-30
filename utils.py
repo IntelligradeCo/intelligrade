@@ -112,7 +112,7 @@ def make_table(num_rows):
         df["Average GPA"] = avg_gpa # Add a 'avg_gpa' column
         df.to_csv("gpa_data.csv", index=False)
         st.success("Data saved successfully!")
-        st.success("Data saved successfully!")
+
         # Printing Table for Demo
         st.download_button("Unofficial Transcript", "gpa_data.csv")
         st.table(df)
